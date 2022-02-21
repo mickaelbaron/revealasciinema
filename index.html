@@ -59,6 +59,12 @@
 			const player4 = AsciinemaPlayer.create('/demo4.cast', document.getElementById('demo4'));
 			const player5 = AsciinemaPlayer.create('/demo5.cast', document.getElementById('demo5'));
 		});
+		Reveal.on( 'slidechanged', event => {
+			const ele = document.getElementsByClassName('asciinema-player');
+			for (let i = 0; i < ele.length; i++) {
+				console.log(ele[i].style);
+			}			
+		} );
 	</script>
 </body>
 
