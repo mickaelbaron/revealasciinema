@@ -7,16 +7,16 @@
 
 	<title>Reveal.js + Asciinema (Bug)</title>
 	<base target="_blank">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/reset.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/reveal.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/theme/white.min.css" id="theme">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/reset.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/reveal.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/theme/white.min.css" id="theme">
 	<!-- Theme used for syntax highlighted code -->
 	<link rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/plugin/highlight/monokai.min.css"
+		href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/plugin/highlight/monokai.min.css"
 		id="highlight-theme">
 
 	<link rel="stylesheet" type="text/css"
-		href="https://unpkg.com/asciinema-player@3.0.0-rc.1/dist/bundle/asciinema-player.css" />
+		href="./asciinema-player.css" />
 </head>
 
 <body>
@@ -42,9 +42,9 @@
 		</div>
 	</div>
 
-	<script src="https://unpkg.com/asciinema-player@3.0.0-rc.1/dist/bundle/asciinema-player.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/reveal.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.2.1/plugin/highlight/highlight.min.js"></script>
+	<script src="./asciinema-player.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/reveal.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/plugin/highlight/highlight.min.js"></script>
 	<script>
 		Reveal.initialize({
 			hash: true,
@@ -56,7 +56,7 @@
 			const player1 = AsciinemaPlayer.create('/demo1.cast', document.getElementById('demo1'));
 			const player2 = AsciinemaPlayer.create('/demo2.cast', document.getElementById('demo2'));
 			const player3 = AsciinemaPlayer.create('/demo3.cast', document.getElementById('demo3'));
-			const player4 = AsciinemaPlayer.create('/demo4.cast', document.getElementById('demo4'));
+			const player4 = AsciinemaPlayer.create('/demo3.cast', document.getElementById('demo4'));
 			const player5 = AsciinemaPlayer.create('/demo5.cast', document.getElementById('demo5'));
 		});
 		Reveal.on( 'slidechanged', event => {
