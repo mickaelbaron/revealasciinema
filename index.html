@@ -1,71 +1,125 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
 
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Reveal.js + Asciinema (Bug)</title>
+    <base target="_blank" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/reset.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/reveal.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/theme/white.min.css"
+      id="theme"
+    />
+    <!-- Theme used for syntax highlighted code -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/plugin/highlight/monokai.min.css"
+      id="highlight-theme"
+    />
 
-	<title>Reveal.js + Asciinema (Bug)</title>
-	<base target="_blank">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/reset.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/reveal.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/theme/white.min.css" id="theme">
-	<!-- Theme used for syntax highlighted code -->
-	<link rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/plugin/highlight/monokai.min.css"
-		id="highlight-theme">
+    <link rel="stylesheet" type="text/css" href="./assets/asciinema-player.css" />
+  </head>
 
-	<link rel="stylesheet" type="text/css"
-		href="./asciinema-player.css" />
-</head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <section>
+            <h3>Test</h3>
+            <div
+              class="asciinema"
+              file="demo1.cast"
+              style="height: 500px"
+            ></div>
+          </section>
+          <section>
+            <div
+              class="asciinema"
+              file="demo2.cast"
+              style="height: 450px"
+            ></div>
+          </section>
+          <section>
+            <div
+              class="asciinema"
+              file="demo3.cast"
+              style="height: 350px"
+            ></div>
+          </section>
+          <section>
+            <div
+              class="asciinema"
+              file="demo4.cast"
+              style="height: 430px"
+            ></div>
+          </section>
+		  <section>
+            <div
+              class="asciinema"
+              file="demo5.cast"
+              style="height: 250px"
+            ></div>
+          </section>
+        </section>
+      </div>
+    </div>
 
-<body>
-	<div class="reveal">
-		<div class="slides">
-			<section>
-				<section>
-					<div id="demo1"></div>
-				</section>
-				<section>
-					<div id="demo2"></div>
-				</section>
-				<section>
-					<div id="demo3"></div>
-				</section>
-				<section>
-					<div id="demo4"></div>
-				</section>
-				<section>
-					<div id="demo5"></div>
-				</section>
-			</section>
-		</div>
-	</div>
+    <script src="./assets/asciinema-player.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/reveal.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/plugin/highlight/highlight.min.js"></script>
+    <script>
+      {
+        const asciinemas = document.getElementsByClassName("asciinema");
+        for (let i = 0; i < asciinemas.length; i++) {
+          const img = document.createElement("img");
+          img.setAttribute("src", "background.png");
+          asciinemas[i].appendChild(img);
+        }
+      }
+      Reveal.initialize({
+        hash: true,
+        autoPlayMedia: true,
+        touch: false,
+        slideNumber: "c/t",
+        showNotes: false,
+        plugins: [RevealHighlight],
+      });
 
-	<script src="./asciinema-player.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/reveal.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.4.0/plugin/highlight/highlight.min.js"></script>
-	<script>
-		Reveal.initialize({
-			hash: true,
-			touch: false,
-			slideNumber: 'c/t',
-			showNotes: false,
-			plugins: [RevealHighlight]
-		}).then(() => {
-			const player1 = AsciinemaPlayer.create('/demo1.cast', document.getElementById('demo1'));
-			const player2 = AsciinemaPlayer.create('/demo2.cast', document.getElementById('demo2'));
-			const player3 = AsciinemaPlayer.create('/demo3.cast', document.getElementById('demo3'));
-			const player4 = AsciinemaPlayer.create('/demo3.cast', document.getElementById('demo4'));
-			const player5 = AsciinemaPlayer.create('/demo5.cast', document.getElementById('demo5'));
-		});
-		Reveal.on( 'slidechanged', event => {
-			const ele = document.getElementsByClassName('asciinema-player');
-			for (let i = 0; i < ele.length; i++) {
-				console.log(ele[i].style);
-			}			
-		} );
-	</script>
-</body>
+      function checkForCasts(event) {
+        const asciinema =
+          event.currentSlide.getElementsByClassName("asciinema")[0];
+        if (asciinema) {
+          const filename = asciinema.getAttribute("file");
+          if (asciinema && !asciinema.playerObject) {
+            // Remove image
+            const firstelementChild = asciinema.firstElementChild;
+            if (firstelementChild) {
+              asciinema.firstElementChild.remove();
+            }
 
+            asciinema.playerObject = AsciinemaPlayer.create(
+              filename,
+              asciinema,
+              { fit: "none"}
+            );
+          }
+        }
+      }
+
+      Reveal.on("ready", checkForCasts);
+      Reveal.on("slidechanged", checkForCasts);
+    </script>
+  </body>
 </html>
