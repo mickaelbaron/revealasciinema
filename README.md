@@ -16,6 +16,6 @@ $ python3 -m http.server
 
 In this version, we create all [asciinema players](https://github.com/asciinema/asciinema-player) all at once. I suppose [Reveal.js](https://revealjs.com/) does not have time to compute the size of the [asciinema players](https://github.com/asciinema/asciinema-player).
 
-To solve the problem, we create the [asciinema player](https://github.com/asciinema/asciinema-player) only when the slide is displayed.
+To solve the problem, we create the [asciinema player](https://github.com/asciinema/asciinema-player) only when the slide (which must contain the [asciinema player](https://github.com/asciinema/asciinema-player)) is displayed.
 
 * Open the https://localhost:8000/workaround.html URL with your web browser and test the result.
