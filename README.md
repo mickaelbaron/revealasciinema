@@ -1,5 +1,7 @@
 # [Reveal.js](https://revealjs.com/) + [Asciinema player](https://github.com/asciinema/asciinema)
 
+**Important: the problem described in this repository is solved from Asciinema 3.3.**.
+
 [Reveal.js](https://revealjs.com/) is an HTML presentation framework and [asciinema player](https://github.com/asciinema/asciinema-player) is a web player for terminal sessions (recorded with [asciinema](https://github.com/asciinema/asciinema)). If you want to use both [Reveal.js](https://revealjs.com/) and [asciinema player](https://github.com/asciinema/asciinema-player) you may encounter display problems.
 
 This problem is described as follows. Sometimes we can have three [asciinema](https://github.com/asciinema/asciinema) sessions which displayed, sometimes four, sometimes one. To solve the problem, we need to refresh the web browser on the current [Reveal.js](https://revealjs.com/) slide where the [asciinema](https://github.com/asciinema/asciinema) session is hidden. Hidden [asciinema players](https://github.com/asciinema/asciinema-player) are created, but the size is null.
